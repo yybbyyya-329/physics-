@@ -1,0 +1,51 @@
+#include <math.h>
+#include <stdio.h>
+
+main() {
+	//호도법
+	int x;
+	printf("각도를 입력하시오:");
+	scanf_s("%d", &x);
+
+	const double PI = 3.1415926;
+
+	double a = sin(x * PI / 180);
+	double b = cos(x * PI / 180);
+	double c = tan(x * PI / 180);
+
+	printf("sin(%d * PI / 180) : %If\n", x, a);
+	printf("cos(%d * PI / 180) : %If\n", x, a);
+	printf("tan(%d * PI / 180) : %If\n", x, a);
+
+	//직교 좌표를 극좌표로
+	int x1, y1;
+
+	printf("x1값을 입력하시오: ");
+	scanf_s("%d", &x1);
+	printf("y1값을 입력하시오: ");
+	scanf_s("%d", &y1);
+
+	double r = sqrt(x1 * x1 + y1 * y1);
+	double theta = atan2(y1, x1);
+
+	double theta_degrees = theta * 180 / PI;
+	printf("극좌표 (r,θ): (%if, %if 라디안)\n", r, theta);
+	printf("극좌표 (r, θ): (%lf, %lf 도)\n", r, theta_degrees);
+
+	//극좌표를 직교 좌표로 변환
+	int r2, theta2;
+	double x2, y2;
+
+	printf("r값을 입력하시오: ");
+	scanf_s("%d", &r2);
+	printf("θ 값을 입력하시오: ");
+	scanf_s("%d", &theta2);
+
+	double theta_rad = theta2 * PI / 180.0;
+
+	x2 = r2 * cos(theta_rad);
+	y2 = r2 * sin(theta_rad);
+
+	printf("직교좌표 (x, y): (%lf, %lf)\n", x2, y2);
+
+} 
